@@ -12,9 +12,9 @@ typedef struct lifo_lista{
 } lifo_t;
 
 lifo_t* new_lista();
-nodo_t* new_nodo(char *dato);
+nodo_t* new_nodo(char dato);
 
-void push(lifo_t *self, char *dato);
+void push(lifo_t *self, char dato);
 char pop(lifo_t *self);
 
 void destruir_lista(lifo_t *self);

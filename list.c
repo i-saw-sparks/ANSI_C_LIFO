@@ -16,7 +16,7 @@ lifo_t *new_lista() {
     return list;
 }
 
-nodo_t *new_nodo(char *dato) {
+nodo_t *new_nodo(char dato) {
     nodo_t *nodo;
     nodo = (nodo_t *)malloc(sizeof(nodo_t));
 
@@ -26,13 +26,13 @@ nodo_t *new_nodo(char *dato) {
         return NULL;
     }
 
-    nodo->dato = *dato;
+    nodo->dato = dato;
     nodo->prev = 0;
     nodo->next = 0;
     return nodo;
 }
 
-void push(lifo_t *self, char *dato) {
+void push(lifo_t *self, char dato) {
     nodo_t *aux = new_nodo(dato);
 
     if(self->head == 0){
@@ -49,12 +49,21 @@ void push(lifo_t *self, char *dato) {
 }
 
 char pop(lifo_t *self) {
+    if(self->head == 0){
+        return '\0';
+    }
+
     char data = self->head->dato;
 
-    nodo_t *aux = self->head;
-    self->head->prev->next = self->head->next;
-    self->head = self->head->prev;
-    destruir_nodo(aux);
+    if(self->head->prev != 0) {
+        nodo_t *aux = self->head;
+        self->head->prev->next = self->head->next;
+        self->head = self->head->prev;
+        destruir_nodo(aux);
+    }else{
+        destruir_nodo(self->head);
+        self->head = 0;
+    }
 
     return data;
 }
