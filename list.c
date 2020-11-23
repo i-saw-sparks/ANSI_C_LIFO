@@ -58,3 +58,11 @@ char pop(lifo_t *self) {
 
     return data;
 }
+
+void destruir_lista(lifo_t *self) {
+    while (self->head != 0){
+        pop(self);
+    }
+
+    free(self);
+}
