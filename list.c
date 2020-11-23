@@ -66,3 +66,7 @@ void destruir_lista(lifo_t *self) {
 
     free(self);
 }
+
+void destruir_nodo(nodo_t *self) {
+    free(self);
+}
