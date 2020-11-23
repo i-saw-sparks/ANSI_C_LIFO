@@ -47,3 +47,14 @@ void push(lifo_t *self, char *dato) {
     aux->prev = self->head;
     self->head = aux;
 }
+
+char pop(lifo_t *self) {
+    char data = self->head->dato;
+
+    nodo_t *aux = self->head;
+    self->head->prev->next = self->head->next;
+    self->head = self->head->prev;
+    destruir_nodo(aux);
+
+    return data;
+}
