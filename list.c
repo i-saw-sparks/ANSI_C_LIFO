@@ -26,8 +26,24 @@ nodo_t *new_nodo(char *dato) {
         return NULL;
     }
 
-    nodo->dato = dato;
+    nodo->dato = *dato;
     nodo->prev = 0;
     nodo->next = 0;
     return nodo;
+}
+
+void push(lifo_t *self, char *dato) {
+    nodo_t *aux = new_nodo(dato);
+
+    if(self->head == 0){
+        aux->prev = 0;
+        aux->next = 0;
+        self->head = aux;
+        return;
+    }
+
+    aux->next = self->head->next;
+    self->head->next = aux;
+    aux->prev = self->head;
+    self->head = aux;
 }
