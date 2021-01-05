@@ -1,5 +1,5 @@
-#ifndef KARENAYALA699_NOV23_LIST_H
-#define KARENAYALA699_NOV23_LIST_H
+#ifndef LIST_H
+#define LIST_H
 
 typedef struct nodo {
     struct nodo *prev;
@@ -20,4 +20,4 @@ char pop(lifo_t *self);
 void destruir_lista(lifo_t *self);
 void destruir_nodo(nodo_t *self);
 
-#endif //KARENAYALA699_NOV23_LIST_H
+#endif //LIST_H
